@@ -154,6 +154,8 @@
     <ClCompile Include="ConsoleApplication1.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Calculation.h" />
+    <ClInclude Include="logic_exs.cpp" />
     <ClInclude Include="translator_str_int.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
