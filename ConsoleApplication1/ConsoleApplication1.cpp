@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include <string>
 #include "translator_str_int.h"
+#include "Calculation.h"
 
 int main()
 {
@@ -27,8 +28,8 @@ int main()
 
 	switch (number_of_the_work)
 	{
-		case '1':
-			//Calculation();
+		case 1:
+			Calculation();
 			break;
 	}
 

@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Файлы заголовков\for Cal.">
+      <UniqueIdentifier>{edbdd7a0-32e4-4cab-8d71-fd374d5d777d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ConsoleApplication1.cpp">
@@ -22,6 +25,12 @@
   <ItemGroup>
     <ClInclude Include="translator_str_int.h">
       <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Calculation.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="logic_exs.cpp">
+      <Filter>Файлы заголовков\for Cal.</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
