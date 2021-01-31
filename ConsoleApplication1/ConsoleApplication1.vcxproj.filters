@@ -21,6 +21,12 @@
     <ClCompile Include="ConsoleApplication1.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="number_exs.cpp">
+      <Filter>Файлы заголовков\for Cal.</Filter>
+    </ClCompile>
+    <ClCompile Include="error.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="translator_str_int.h">

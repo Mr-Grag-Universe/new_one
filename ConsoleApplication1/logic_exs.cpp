@@ -4,9 +4,8 @@
 #include <cmath>
 #include <vector>
 #include <set>
+#include "error.h"
 
-void error_brackets() { std::cout << "Проверьте расстановку скобок."; } // error
-void error_chur() { std::cout << "Некорректная запись выражения. Проверьте и попробуйте ещё раз."; }
 int resalt(std::string a, std::string b, std::string oper) {
 	bool A, B;
 	if (a == "1") { A = true; }
@@ -50,7 +49,7 @@ bool logic_exs() {
 			if (buf == ')') { space--; }
 			continue;
 		}
-		else if (buf == ' ') { auto iter = A.cbegin(); A.erase(i, 1); i--; l--; }
+		else if (buf == ' ') { auto iter = A.cbegin(); A.erase(iter + i); i--; l--; }
 		else { error_chur(); return 0; }
 	}
 	if (space) { error_brackets(); return 0; } //checking the adequacy of parenthesis arrangements
