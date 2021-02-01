@@ -1,7 +1,7 @@
 ﻿#include <iostream>
 #include <string>
-#include "translator_str_int.h"
-#include "Calculation.h"
+#include "translator_str_int.cpp"
+#include "Calculation.cpp"
 
 int main()
 {

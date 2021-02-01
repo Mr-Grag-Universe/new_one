@@ -1,11 +1,13 @@
-#pragma once
+//#pragma once
 #include <iostream>
 #include <string>
 #include <vector>
 #include <set>
 #include "logic_exs.cpp"
+
+
+static bool number_exs();
 #include "number_exs.cpp"
-#include "error.h"
 
 void Calculation() {
 	//explain rules

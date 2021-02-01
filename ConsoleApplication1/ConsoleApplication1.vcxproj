@@ -152,13 +152,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ConsoleApplication1.cpp" />
-    <ClCompile Include="error.h" />
     <ClCompile Include="number_exs.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Calculation.h" />
+    <ClInclude Include="Calculation.cpp" />
     <ClInclude Include="logic_exs.cpp" />
-    <ClInclude Include="translator_str_int.h" />
+    <ClInclude Include="translator_str_int.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

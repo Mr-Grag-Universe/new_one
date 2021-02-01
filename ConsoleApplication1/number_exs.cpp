@@ -1,11 +1,15 @@
+//#pragma once
 #include <iostream>
 #include <string>
 #include <set>
 #include <vector>
-#include "error.h"
 
-std::string ch_str(char a) { std::string b = ""; b += a; return b; }
-bool checking_char(char a, std::multiset <std::string> operators) {
+static void error_brackets1() { std::cout << "Проверьте расстановку скобок."; } // error
+static void error_chur1() { std::cout << "Некорректная запись выражения. Проверьте и попробуйте ещё раз."; }
+static void error_number1() { std::cout << "Выражение не имеет смысла."; }
+static void error_double_operators1() { std::cout << "Проверьте правильность расстановки операторов"; }
+static std::string ch_str(char a) { std::string b = ""; b += a; return b; }
+static bool checking_char(char a, std::multiset <std::string> operators) {
 	if (a <= 'a' || a >= 'z') {
 		if (a <= '0' || a >= '9') {
 			if (operators.find(ch_str(a)) == operators.end()) {
@@ -16,69 +20,69 @@ bool checking_char(char a, std::multiset <std::string> operators) {
 	return true;
 }
 
-bool number_exs() {
-	std::string A;
+bool  number_exs() {
+	std::string B;
 	std::multiset <std::string> operators = { "*", "/", "-", "+", "!", "^" }; //list of operators that may be present
 	std::multiset <std::string> functions = { "ln", "log", "lg", "sqrt", "sin" }; //list of functions that may be present
 
-	setlocale(LC_CTYPE, "rus");
-	std::cout << "Spaces do not affect the result. Case sensitive.";
+	//setlocale(LC_CTYPE, "rus");
+	//std::cout << "Spaces do not affect the result. Case sensitive.";
 	std::cout << "Symbols of logical operations:" << std::endl;
-	std::cout << "Операторы: '*', '/', '+', '-', '!', '^'.";
+	//std::cout << "Операторы: '*', '/', '+', '-', '!', '^'.";
 	std::cin.get();
-	std::getline(std::cin, A);
+	std::getline(std::cin, B);
 
 	//checking the entered characters in an ordered list
-	for (int i = 0, l = A.size(), space = 0, k = 0; i < l; i++) {
-		char buf = A[i];
+	for (int i = 0, l = B.size(), space = 0, k = 0; i < l; i++) {
+		char buf = B[i];
 		if (buf >= '0' && buf <= '9') { k++; }
 		if (checking_char(buf, operators) || buf == ')' || buf == '(' || buf == ',') {
 			if (buf == '(') {
-				if (i != l - 1) { if (A[i + 1] == ')') { error_brackets(); return 0; } }
-				else { error_brackets(); return 0; }
+				if (i != l - 1) { if (B[i + 1] == ')') { error_brackets1(); return 0; } }
+				else { error_brackets1(); return 0; }
 				space++;
 			}
 			else if (buf == ')') {
-				if (i != l - 1) { if (A[i + 1] == '(') { error_brackets(); return 0; } }
+				if (i != l - 1) { if (B[i + 1] == '(') { error_brackets1(); return 0; } }
 				space--;
 			}
 			else if (operators.find(ch_str(buf)) != operators.end()) {//проверка расстановки операторов
-				if (operators.find(ch_str(A[i + 1])) != operators.end()) {
+				if (operators.find(ch_str(B[i + 1])) != operators.end()) {
 					if (i != l - 1) {
-						if (buf == A[i]) {
-							if (buf != '!' && buf != '-' && buf != '+') { error_double_operators(); return 0; }
+						if (buf == B[i]) {
+							if (buf != '!' && buf != '-' && buf != '+') { error_double_operators1(); return 0; }
 						}
-						else if ((buf == '-' || buf == '+') && (A[i + 1] != '-')) { error_double_operators(); return 0; }
+						else if ((buf == '-' || buf == '+') && (B[i + 1] != '-')) { error_double_operators1(); return 0; }
 						//преобразование унарного минуса
-						else if (buf == '-' && A[i + 1] == '-') { auto iter = A.cbegin(); A.erase(iter + i + 1); i--; l--; A[i] = '+'; continue; }
-						else if (buf == '+' && A[i + 1] == '-') { auto iter = A.cbegin(); A.erase(iter + i); i--; l--; continue; }
+						else if (buf == '-' && B[i + 1] == '-') { auto iter = B.cbegin(); B.erase(iter + i + 1); i--; l--; B[i] = '+'; continue; }
+						else if (buf == '+' && B[i + 1] == '-') { auto iter = B.cbegin(); B.erase(iter + i); i--; l--; continue; }
 					}
 				}//можно дописать про случаи оператор - другое
 			}
 			continue;
 		}
-		if (space < 0) { error_brackets(); return 0; }
-		else if (buf == ' ') { auto iter = A.cbegin(); A.erase(iter + i); i--; l--; continue; }
-		else { error_chur(); return 0; }
+		if (space < 0) { error_brackets1(); return 0; }
+		else if (buf == ' ') { auto iter = B.cbegin(); B.erase(iter + i); i--; l--; continue; }
+		else { error_chur1(); return 0; }
 		if (i == l - 1) {
-			if (space) { error_brackets(); return 0; }
-			if (k == 0) { error_number(); return 0; }
+			if (space) { error_brackets1(); return 0; }
+			if (k == 0) { error_number1(); return 0; }
 		}//checking the adequacy of parenthesis arrangements and is there number
 	}
-	for (int i = 0, l = A.size(); i < l; ++i) {//проверка допустимости сочетаний букв
+	for (int i = 0, l = B.size(); i < l; ++i) {//проверка допустимости сочетаний букв
 
 	}
 
 	std::vector <std::string> main;//главный массив из чисел, операторов и функций
-	for (auto now : A) { main.push_back(ch_str(now)); }
-	for (int i = 0, l = A.size(); i < l; i++) {
+	for (auto now : B) { main.push_back(ch_str(now)); }
+	for (int i = 0; i < B.size(); i++) {
 		if (operators.find(main[i]) != operators.end()) { continue; }
-		if (main[i] >= "0" && main[i] <= "9") { //если это число, то объединить в одно
-			for (int j = i + 1; main[j] >= "0" && main[j] <= "9" || main[j] == ","; j++) {
+		if (main[i] >= "0" && main[i] <= "9" && i != B.size()-1) { //если это число, то объединить в одно
+			for (int j = i + 1; main[j] >= "0" && main[j] <= "9" || main[j] == ","; j++) {//ERROR
 				main[i] += main[j];
 			}
 			i++;
-			while (main[i] >= "0" && main[i] <= "9") { auto iter = main.cbegin(); main.erase(iter + i); l--; }
+			while (main[i] >= "0" && main[i] <= "9") { auto iter = main.cbegin(); main.erase(iter + i); }
 			i--; continue;
 		}
 	}
