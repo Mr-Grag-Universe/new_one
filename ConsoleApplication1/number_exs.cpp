@@ -1,4 +1,4 @@
-//#pragma once
+#pragma once
 #include <iostream>
 #include <string>
 #include <set>
@@ -20,7 +20,7 @@ static bool checking_char(char a, std::multiset <std::string> operators) {
 	return true;
 }
 
-bool  number_exs() {
+bool number_exs() {
 	std::string B;
 	std::multiset <std::string> operators = { "*", "/", "-", "+", "!", "^" }; //list of operators that may be present
 	std::multiset <std::string> functions = { "ln", "log", "lg", "sqrt", "sin" }; //list of functions that may be present
@@ -75,9 +75,9 @@ bool  number_exs() {
 
 	std::vector <std::string> main;//главный массив из чисел, операторов и функций
 	for (auto now : B) { main.push_back(ch_str(now)); }
-	for (int i = 0; i < B.size(); i++) {
+	for (int i = 0; i < main.size(); i++) {
 		if (operators.find(main[i]) != operators.end()) { continue; }
-		if (main[i] >= "0" && main[i] <= "9" && i != B.size()-1) { //если это число, то объединить в одно
+		if (main[i] >= "0" && main[i] <= "9" && i != main.size()-1) { //если это число, то объединить в одно
 			for (int j = i + 1; main[j] >= "0" && main[j] <= "9" || main[j] == ","; j++) {//ERROR
 				main[i] += main[j];
 			}
