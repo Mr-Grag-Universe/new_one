@@ -16,21 +16,27 @@
     <Filter Include="Файлы заголовков\for Cal.">
       <UniqueIdentifier>{edbdd7a0-32e4-4cab-8d71-fd374d5d777d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\for Cal.\error">
+      <UniqueIdentifier>{dff97b49-0ccd-44ec-9797-cb02f0a80b56}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ConsoleApplication1.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="number_exs.cpp">
+      <Filter>Файлы заголовков\for Cal.</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="translator_str_int.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Calculation.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="logic_exs.cpp">
       <Filter>Файлы заголовков\for Cal.</Filter>
+    </ClInclude>
+    <ClInclude Include="Calculation.cpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="translator_str_int.cpp">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

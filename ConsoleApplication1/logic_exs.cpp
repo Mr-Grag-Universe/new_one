@@ -1,12 +1,15 @@
-//#pragma once
+#pragma once
 #include <iostream>
 #include <string>
 #include <cmath>
 #include <vector>
 #include <set>
 
-void error_brackets() { std::cout << "Проверьте расстановку скобок."; } // error
-void error_chur() { std::cout << "Некорректная запись выражения. Проверьте и попробуйте ещё раз."; }
+
+inline static void error_brackets2() { std::cout << "Проверьте расстановку скобок."; } // error
+inline static void error_chur2() { std::cout << "Некорректная запись выражения. Проверьте и попробуйте ещё раз."; }
+inline static void error_number2() { std::cout << "Выражение не имеет смысла."; }
+inline static void error_double_operators2() { std::cout << "Проверьте правильность расстановки операторов"; }
 int resalt(std::string a, std::string b, std::string oper) {
 	bool A, B;
 	if (a == "1") { A = true; }
@@ -44,21 +47,21 @@ bool logic_exs() {
 	int space = 0;
 	for (int i = 0, l = A.size(); i < l; i++) {
 		char buf = A[i];
-		if (space < 0) { error_brackets(); return 0; }
+		if (space < 0) { error_brackets2(); return 0; }
 		if (buf == '1' || buf == '0' || buf == '&' || buf == '_' || buf == '~' || buf == '>' || buf == '-' || buf == ')' || buf == '(' || buf == '|') {
 			if (buf == '(') { space++; }
 			if (buf == ')') { space--; }
 			continue;
 		}
-		else if (buf == ' ') { auto iter = A.cbegin(); A.erase(i, 1); i--; l--; }
-		else { error_chur(); return 0; }
+		else if (buf == ' ') { auto iter = A.cbegin(); A.erase(iter + i); i--; l--; }
+		else { error_chur2(); return 0; }
 	}
-	if (space) { error_brackets(); return 0; } //checking the adequacy of parenthesis arrangements
+	if (space) { error_brackets2(); return 0; } //checking the adequacy of parenthesis arrangements
 
 	//if it's only one simbol
 	if (A.size() == 1) {
 		if (A[0] == '0' || A[0] == '1') { std::cout << A[0] << std::endl; return 1; }
-		else { error_chur(); return 0; }
+		else { error_chur2(); return 0; }
 	}
 
 	//for (auto now : A) { cout << now << " "; } //checking
@@ -88,9 +91,9 @@ bool logic_exs() {
 			l -= 2; i--; continue;
 		}
 		//if 00 or 11 or 01 or 10
-		if ((Main_temp[i] == '1' || Main_temp[i] == '0')  && (Main_temp[i+1] == '0' || Main_temp[i+1] == '1')) { error_chur(); return 0; }
+		if ((Main_temp[i] == '1' || Main_temp[i] == '0')  && (Main_temp[i+1] == '0' || Main_temp[i+1] == '1')) { error_chur2(); return 0; }
 		//if it's operator (not _)
-		if (operators.find(temp1) != operators.end() && operators.find(temp2) != operators.end() && temp1 != "_") { error_chur(); return 0; }
+		if (operators.find(temp1) != operators.end() && operators.find(temp2) != operators.end() && temp1 != "_") { error_chur2(); return 0; }
 		//if it's '->'
 		if (temp1 == "-" && temp2 == ">") {
 			auto iter = Main.cbegin();
